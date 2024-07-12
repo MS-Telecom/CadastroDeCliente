@@ -6,7 +6,7 @@
     <title>Cadastro de Cliente</title>
 </head>
 <body>
-    <form action="https://your-backend-url.com/submit" method="POST">
+    <form id="cadastroForm">
         <label for="nome">Nome:</label>
         <input type="text" id="nome" name="nome" required><br>
         <label for="cpf">CPF:</label>
@@ -42,5 +42,47 @@
         <input type="text" id="referencia" name="referencia"><br>
         <input type="submit" value="Enviar">
     </form>
+
+    <script>
+        document.getElementById('cadastroForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var formData = {
+                nome: document.getElementById('nome').value,
+                cpf: document.getElementById('cpf').value,
+                dataNasc: document.getElementById('data-nasc').value,
+                rg: document.getElementById('rg').value,
+                email: document.getElementById('email').value,
+                whatsapp: document.getElementById('whatsapp').value,
+                cep: document.getElementById('cep').value,
+                endereco: document.getElementById('endereco').value,
+                numero: document.getElementById('numero').value,
+                bairro: document.getElementById('bairro').value,
+                cidade: document.getElementById('cidade').value,
+                uf: document.getElementById('uf').value,
+                complemento: document.getElementById('complemento').value,
+                referencia: document.getElementById('referencia').value
+            };
+            fetch('https://script.google.com/macros/s/AKfycbx_jVRBa-Eh2r0Ti3BVkQZ7QoNgBFddGcr_4zCvhwGptC8jTLidz16bJnXKW72CD9hG/exec', {
+                method: 'POST',
+                mode: 'cors',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.result === 'success') {
+                    alert('Cadastro enviado com sucesso!');
+                    document.getElementById('cadastroForm').reset();
+                } else {
+                    alert('Houve um problema ao enviar o cadastro.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    </script>
 </body>
 </html>
