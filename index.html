@@ -154,8 +154,9 @@
                 complemento: document.getElementById('complemento').value,
                 referencia: document.getElementById('referencia').value
             };
-            fetch('https://script.google.com/macros/s/AKfycbwNSVFcgPGYYtKtqkvNRUMVdps3VjZ2XvKIc1k75t6zG038ymGsczET2C2PhGkVB9kH/exec', {
+            fetch('https://script.google.com/macros/s/AKfycbwvM0CdLcKZpcwJzXwD6SH5tKQV4STk-_Y2_zgxDEcuFnqwXC1hEI_KPjWDUKfmeWI0/exec', {
                 method: 'POST',
+                mode: 'cors',
                 headers: {
                     'Content-Type': 'application/json'
                 },
