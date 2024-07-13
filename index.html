@@ -156,20 +156,15 @@
             };
             fetch('https://script.google.com/macros/s/AKfycbzRsSWz2yjM4I2Lupi6R6L1YraIsRBLAVxcDJB9O8DYyBxhdOYTYnjUY9FaHapmZ5DP/exec', {
                 method: 'POST',
-                mode: 'cors',
+                mode: 'no-cors',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(formData)
             })
-            .then(response => response.json())
-            .then(data => {
-                if (data.result === 'success') {
-                    alert('Cadastro enviado com sucesso!');
-                    document.getElementById('cadastroForm').reset();
-                } else {
-                    alert('Houve um problema ao enviar o cadastro.');
-                }
+            .then(() => {
+                alert('Cadastro enviado com sucesso!');
+                document.getElementById('cadastroForm').reset();
             })
             .catch(error => {
                 console.error('Error:', error);
